@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
 const StopWatch = () => {
-  const [num, setNum] = useState(1);
+  const [num, setNum] = useState(0);
   const [pause, setPause] = useState(true);
 
   const intervalRef = useRef();

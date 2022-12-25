@@ -12,7 +12,7 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 const GetData = async () => {
   const value = await fetch("http://localhost:3004/posts");
-  console.log("Getting Data");
+  // console.log("Getting Data");
   return value.json();
 };
 const ApiCalling = () => {
@@ -27,14 +27,14 @@ const ApiCalling = () => {
     const content = await rawResponsce.json();
     Navigate("/");
 
-    console.log("Response from the enpoint recievend", content);
+    // console.log("Response from the enpoint recievend", content);
   });
   const handleDelete = useCallback(() => {
     mutation.mutate(deleteID);
   }, [deleteID, mutation]);
   // const handleDelete=()=>{}
   const query = useQuery("PostsbyIds", GetData);
-  console.log(query);
+  // console.log(query);
   return (
     <>
       <div className="w-75 border-2 m-auto">
@@ -61,6 +61,9 @@ const ApiCalling = () => {
         <Link className="btn border m-3" to="/inputFocus">
           Input Focus
         </Link>
+        <Link className="btn border m-3" to="/reducerForm">
+          Reducer Form
+        </Link>
         <Table className="w-75">
           <thead>
             <tr className="bg-danger">
@@ -70,6 +73,7 @@ const ApiCalling = () => {
               <th className="border border-danger">Username</th>
               <th className="border border-danger">Details</th>
               <th className="border border-danger">Delete</th>
+              <th className="border border-danger">Update</th>
             </tr>
           </thead>
           <tbody className="bg-success">
@@ -90,13 +94,23 @@ const ApiCalling = () => {
                       </td>
                       <td className="border border-danger ">
                         <Button
-                          className="border-danger bg-transparent text-black"
+                          className="border-danger bg-danger text-black"
                           onClick={() => {
                             setModal(!modal);
                             setdeleteID(posts.id);
                           }}
                         >
                           Delete
+                        </Button>
+                      </td>
+                      <td className="border border-danger ">
+                        <Button
+                          className="border-danger btn btn-info text-black"
+                          onClick={() => {
+                            Navigate(`/editForm/${posts.id}`);
+                          }}
+                        >
+                          Update
                         </Button>
                       </td>
                     </tr>
@@ -117,7 +131,7 @@ const ApiCalling = () => {
             color="secondary"
             onClick={() => {
               setModal(!modal);
-              console.log("Delete Cancelled");
+              // console.log("Delete Cancelled");
             }}
           >
             Abort

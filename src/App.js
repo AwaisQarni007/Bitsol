@@ -6,6 +6,8 @@ import ListDetail from "./Components/ListDetail";
 import AddUserForm from "./Components/AddUserForm";
 import StopWatch from "./Components/StopWatch";
 import InputFocus from "./Components/InputFocus";
+import ReducerForm from "./Components/Form";
+import EditForm from "./Components/EditForm"
 const queryClient = new QueryClient();
 
 function App() {
@@ -19,6 +21,8 @@ function App() {
         <Route path="/posts" element={<ApiCalling />} />
         <Route path="/stopWatch" element={<StopWatch />} />
         <Route path="/inputFocus" element={<InputFocus />} />
+        <Route path="/reducerForm" element={<ReducerForm />} />
+        <Route path="/editForm/:id" element={<EditForm />} />
         <Route path="/posts/:id" element={<ListDetail />} />
       </Routes>
     </QueryClientProvider>
